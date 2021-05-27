@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.GridPane;
@@ -27,6 +28,45 @@ public class SodokuController {
     private GridPane sodokuGridPane;
     @FXML
     private Label messageLabel;
+    @FXML
+    private CheckBox randomBox;
+    @FXML
+    private CheckBox customBox;
+    @FXML
+    private Button resetButton;
+
+    public void initialize(){
+        customBox.setSelected(true);
+    }
+
+
+
+    @FXML
+    private void handleRandomBox(){
+        if(randomBox.isSelected()){
+            customBox.setSelected(false);
+            resetButton.setText("New Puzzle");
+        }
+    }
+
+    @FXML
+    private void handleCustomBox(){
+        if(customBox.isSelected()){
+            randomBox.setSelected(false);
+            resetButton.setText("Reset Board");
+        }
+    }
+
+    @FXML
+    private void handleResetButton(){
+        if(customBox.isSelected()){
+            this.sodokuGrid = new int[9][9];
+            updateGrid();
+        }
+//        else if (randomBox.isSelected()){
+//            this.sodokuGrid =
+//        }
+    }
 
 
 
@@ -35,11 +75,12 @@ public class SodokuController {
      * @param id id of the cell
      * @return the text in cell
      */
-    public String getTextField(TextField id){
+    private String getTextField(TextField id){
         return id.getText();
     }
 
-    public void getGridPane(){
+    @FXML
+    private void getGridPane(){
         for (int i = 0; i < sodokuGridPane.getChildren().size()-1; i++) {
             try {
                 int numInGrid = Integer.parseInt(getTextField((TextField) sodokuGridPane.getChildren().get(i)));
@@ -48,7 +89,7 @@ public class SodokuController {
                         sodokuGrid[Math.floorDiv(i, 9)][(i % 9)] = numInGrid;
                     }
                     else{
-                        messageLabel.setText("this isn't valid");
+                        messageLabel.setText("This isn't valid");
                     }
                 }
                 else {
@@ -62,10 +103,12 @@ public class SodokuController {
         updateGrid();
     }
 
-    public void solveSodoku(){
+    @FXML
+    private void solveSodoku(){
         try {
             SodokuConfiguration sodokuConfiguration = new SodokuConfiguration(sodokuGrid);
             this.sodokuGrid = sodokuConfiguration.getSolvedBoard(sodokuGrid);
+            messageLabel.setText("Puzzle solved");
             updateGrid();
         }
         catch (IndexOutOfBoundsException e){
@@ -73,10 +116,11 @@ public class SodokuController {
         }
     }
 
+
     /**
      * update to the grid pane
      */
-    public void updateGrid(){
+    private void updateGrid(){
         for (int i = 0 ; i < sodokuGridPane.getChildren().size()-1; i++) {
             if (sodokuGrid[Math.floorDiv(i, 9)][(i%9)] == 0){
                 ((TextField)sodokuGridPane.getChildren().get(i)).setText("");
@@ -92,7 +136,8 @@ public class SodokuController {
      * @param event click home button
      * @throws IOException throw exception if cannot open source
      */
-    public void switchToMain(ActionEvent event) throws IOException {
+    @FXML
+    private void switchToMain(ActionEvent event) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("Resources/MainStage.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -147,7 +192,17 @@ public class SodokuController {
         return true;
     }
 
+    /**
+     * check valid for row, col, box to see if there is duplicate
+     * @param num number pointing at
+     * @param rowCords
+     * @param colCords
+     * @return
+     */
     private boolean validCheck(int num, int rowCords, int colCords){
         return rowCheck(num,rowCords,colCords)&&colCheck(num,rowCords,colCords)&&boxCheck(num,rowCords,colCords);
     }
+
+
+
 }
