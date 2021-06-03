@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="hoppersBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Hoppers.Controller.HoppersController">
+   <top>
+      <Label fx:id="topLabel" prefHeight="57.0" prefWidth="145.0" text="Label" BorderPane.alignment="CENTER" />
+   </top>
+   <left>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="homeButton" mnemonicParsing="false" onAction="#handleHomeButton" text="Home" />
+         </children></VBox>
+   </left>
+   <right>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="resetButton" mnemonicParsing="false" onAction="#handleResetButton" text="Reset" />
+            <Button fx:id="hintButton" mnemonicParsing="false" onAction="#handleHintButton" text="Hint" />
+         </children>
+      </VBox>
+   </right>
+</BorderPane>

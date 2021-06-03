@@ -10,7 +10,7 @@ public class MainWindow extends Application {
     public void start(Stage stage){
         try {
             stage.setTitle("Puzzle games");
-            Parent primaryRoot = FXMLLoader.load(getClass().getResource("/Resources/MainStage.fxml"));
+            Parent primaryRoot = FXMLLoader.load(getClass().getResource("/MainResources/MainStage.fxml"));
             Scene primaryScene = new Scene(primaryRoot);
             stage.setResizable(false);
             stage.setScene(primaryScene);

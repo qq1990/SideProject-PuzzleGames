@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainap" prefHeight="700.0" prefWidth="1000.0" stylesheets="@background.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MainController">
+<AnchorPane fx:id="mainap" prefHeight="700.0" prefWidth="1000.0" stylesheets="@background.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainController">
    <children>
       <Button layoutX="445.0" layoutY="409.0" mnemonicParsing="false" onAction="#switchToGame" prefHeight="60.0" prefWidth="110.0" text="Start" textAlignment="CENTER" textOverrun="CLIP">
          <font>

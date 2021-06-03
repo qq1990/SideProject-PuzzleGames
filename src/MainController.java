@@ -1,5 +1,3 @@
-package Controllers;
-
 import java.io.IOException;
 import java.util.Objects;
 
@@ -41,6 +39,7 @@ public class MainController {
     public void setGameChoice(){
         gameChoices.getItems().add("Sudoku");
         gameChoices.getItems().add("Tents");
+        gameChoices.getItems().add("Hoppers");
     }
 
     /**
@@ -51,13 +50,26 @@ public class MainController {
         try {
             if (gameChoices.getValue().equals("Sudoku")) {
                 switchToSudoku(event);
-            } else if (gameChoices.getValue().equals("Tents")) {
+            }
+            else if (gameChoices.getValue().equals("Tents")) {
                 switchToTents(event);
+            }
+            else if (gameChoices.getValue().equals("Hoppers")) {
+                switchToHoppers(event);
             }
         }
         catch (IOException e){
             System.out.println("Resources files can't be read");
         }
+    }
+
+    public void switchToHoppers(ActionEvent event) throws IOException{
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("Hoppers/GUI/HoppersStage.fxml")));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setResizable(false);
+        stage.setScene(scene);
+        stage.show();
     }
 
     /**
@@ -66,7 +78,7 @@ public class MainController {
      * @throws IOException throw exception if file can't be read
      */
     public void switchToTents(ActionEvent event) throws IOException{
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("Resources/TentsStage.fxml")));
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("TentsAndTrees/Resources/TentsStage.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setResizable(false);
@@ -80,7 +92,7 @@ public class MainController {
      * @throws IOException throw exception if file can't be read
      */
     public void switchToSudoku(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("Resources/SudokuStage.fxml")));
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("Sudoku/GUI/SudokuStage.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setResizable(false);

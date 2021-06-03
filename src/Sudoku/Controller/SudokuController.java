@@ -1,9 +1,8 @@
-package Controllers;
+package Sudoku.Controller;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,8 +15,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import Sodoku.Model.SudokuConfiguration;
-
+import Sudoku.Model.SudokuConfiguration;
 import java.io.IOException;
 
 /**
@@ -28,16 +26,16 @@ public class SudokuController {
     //board
     private int[][] sudokuGrid = new int[9][9];
     //data to make board
-    private final String sudokuData = "src/Resources/SudokuData.txt";
+    private final String sudokuData = "src/Sudoku/Resources/SudokuData.txt";
     //flag if one of the cells is invalid
     private boolean isValid = true;
-    //grid pane that contains cells in sodoku
+    //grid pane that contains cells in sudoku
     @FXML
     private GridPane sudokuGridPane;
     //message for client
     @FXML
     private Label messageLabel;
-    //check box for random sodoku mode
+    //check box for random sudoku mode
     @FXML
     private CheckBox randomBox;
     //check box for solver mode
@@ -226,7 +224,7 @@ public class SudokuController {
      */
     @FXML
     private void switchToMain(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("Resources/MainStage.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("MainResources/MainStage.fxml")));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
