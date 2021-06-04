@@ -20,7 +20,6 @@ import BFS.Observer;
 import Hoppers.Model.HoppersClientData;
 import Hoppers.Model.HoppersModel;
 
-import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -28,7 +27,7 @@ import java.util.Objects;
 public class HoppersController implements Observer<HoppersModel, HoppersClientData> {
     private final static String RESOURCES_DIR = "Images/";
     private HoppersModel model;
-    private ArrayList<Button> buttonsList = new ArrayList<>();
+    private final ArrayList<Button> buttonsList = new ArrayList<>();
 
     private final Image redFrog = new Image(getClass().getResourceAsStream(RESOURCES_DIR+"red_frog.png"));
     private final Image greenFrog = new Image(getClass().getResourceAsStream(RESOURCES_DIR+"green_frog.png"));
@@ -50,7 +49,7 @@ public class HoppersController implements Observer<HoppersModel, HoppersClientDa
         ObservableList<String> list = FXCollections.observableArrayList("Puzzle 1", "Puzzle 2", "Puzzle 3",
                 "Puzzle 4", "Puzzle 5", "Puzzle 6", "Puzzle 7");
         puzzleChoices.setItems(list);
-        String filename = "data/hoppers/hoppers-7.txt";
+        String filename = "src/Hoppers/Resources/hoppers-7.txt";
         try {
             this.model = new HoppersModel(filename);
             model.addObserver(this);
@@ -118,13 +117,13 @@ public class HoppersController implements Observer<HoppersModel, HoppersClientDa
     @FXML
     private void handlePuzzleChoices(){
         switch (puzzleChoices.getValue()) {
-            case "Puzzle 1" -> model.load("data/hoppers/hoppers-1.txt");
-            case "Puzzle 2" -> model.load("data/hoppers/hoppers-2.txt");
-            case "Puzzle 3" -> model.load("data/hoppers/hoppers-3.txt");
-            case "Puzzle 4" -> model.load("data/hoppers/hoppers-4.txt");
-            case "Puzzle 5" -> model.load("data/hoppers/hoppers-5.txt");
-            case "Puzzle 6" -> model.load("data/hoppers/hoppers-6.txt");
-            case "Puzzle 7" -> model.load("data/hoppers/hoppers-7.txt");
+            case "Puzzle 1" -> model.load("src/Hoppers/Resources/hoppers-1.txt");
+            case "Puzzle 2" -> model.load("src/Hoppers/Resources/hoppers-2.txt");
+            case "Puzzle 3" -> model.load("src/Hoppers/Resources/hoppers-3.txt");
+            case "Puzzle 4" -> model.load("src/Hoppers/Resources/hoppers-4.txt");
+            case "Puzzle 5" -> model.load("src/Hoppers/Resources/hoppers-5.txt");
+            case "Puzzle 6" -> model.load("src/Hoppers/Resources/hoppers-6.txt");
+            case "Puzzle 7" -> model.load("src/Hoppers/Resources/hoppers-7.txt");
         }
     }
 
