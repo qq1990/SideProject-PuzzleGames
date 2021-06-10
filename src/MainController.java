@@ -40,6 +40,7 @@ public class MainController {
         gameChoices.getItems().add("Sudoku");
         gameChoices.getItems().add("Tents");
         gameChoices.getItems().add("Hoppers");
+        gameChoices.getItems().add("Memory Matching");
     }
 
     /**
@@ -48,14 +49,11 @@ public class MainController {
      */
     public void switchToGame(ActionEvent event){
         try {
-            if (gameChoices.getValue().equals("Sudoku")) {
-                switchToSudoku(event);
-            }
-            else if (gameChoices.getValue().equals("Tents")) {
-                switchToTents(event);
-            }
-            else if (gameChoices.getValue().equals("Hoppers")) {
-                switchToHoppers(event);
+            switch (gameChoices.getValue()) {
+                case "Sudoku" -> switchToSudoku(event);
+                case "Tents" -> switchToTents(event);
+                case "Hoppers" -> switchToHoppers(event);
+                case "Memory Matching" -> switchToMemoryMatching(event);
             }
         }
         catch (IOException e){
@@ -78,7 +76,7 @@ public class MainController {
      * @throws IOException throw exception if file can't be read
      */
     public void switchToTents(ActionEvent event) throws IOException{
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("TentsAndTrees/Resources/TentsStage.fxml")));
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("TentsAndTrees/GUI/TentsStage.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setResizable(false);
@@ -93,6 +91,16 @@ public class MainController {
      */
     public void switchToSudoku(ActionEvent event) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("Sudoku/GUI/SudokuStage.fxml")));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setResizable(false);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+
+    public void switchToMemoryMatching(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("MemoryMatching/GUI/MemoryMatchingStage.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setResizable(false);
