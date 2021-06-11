@@ -41,6 +41,7 @@ public class MainController {
         gameChoices.getItems().add("Tents");
         gameChoices.getItems().add("Hoppers");
         gameChoices.getItems().add("Memory Matching");
+        gameChoices.getItems().add("Rush Hour");
     }
 
     /**
@@ -54,6 +55,7 @@ public class MainController {
                 case "Tents" -> switchToTents(event);
                 case "Hoppers" -> switchToHoppers(event);
                 case "Memory Matching" -> switchToMemoryMatching(event);
+                case "Rush Hour" -> switchToRushHour(event);
             }
         }
         catch (IOException e){
@@ -101,6 +103,11 @@ public class MainController {
      */
     public void switchToMemoryMatching(ActionEvent event) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("Games/MemoryMatching/GUI/MemoryMatchingStage.fxml")));
+        playGame(root, event);
+    }
+
+    public void switchToRushHour(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("Games/RushHour/GUI/RushHourStage.fxml")));
         playGame(root, event);
     }
 }
