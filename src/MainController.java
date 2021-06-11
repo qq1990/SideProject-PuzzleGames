@@ -61,13 +61,17 @@ public class MainController {
         }
     }
 
-    public void switchToHoppers(ActionEvent event) throws IOException{
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("Hoppers/GUI/HoppersStage.fxml")));
+    public void playGame(Parent root, ActionEvent event){
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void switchToHoppers(ActionEvent event) throws IOException{
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("Games/Hoppers/GUI/HoppersStage.fxml")));
+        playGame(root, event);
     }
 
     /**
@@ -76,12 +80,8 @@ public class MainController {
      * @throws IOException throw exception if file can't be read
      */
     public void switchToTents(ActionEvent event) throws IOException{
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("TentsAndTrees/GUI/TentsStage.fxml")));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setResizable(false);
-        stage.setScene(scene);
-        stage.show();
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("Games/TentsAndTrees/GUI/TentsStage.fxml")));
+        playGame(root, event);
     }
 
     /**
@@ -90,21 +90,17 @@ public class MainController {
      * @throws IOException throw exception if file can't be read
      */
     public void switchToSudoku(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("Sudoku/GUI/SudokuStage.fxml")));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setResizable(false);
-        stage.setScene(scene);
-        stage.show();
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("Games/Sudoku/GUI/SudokuStage.fxml")));
+        playGame(root, event);
     }
 
-
+    /**
+     * switch to memory matching puzzle
+     * @param event action event
+     * @throws IOException throw exception if file can't be read
+     */
     public void switchToMemoryMatching(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("MemoryMatching/GUI/MemoryMatchingStage.fxml")));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setResizable(false);
-        stage.setScene(scene);
-        stage.show();
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("Games/MemoryMatching/GUI/MemoryMatchingStage.fxml")));
+        playGame(root, event);
     }
 }
