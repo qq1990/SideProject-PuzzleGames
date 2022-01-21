@@ -1,9 +1,0 @@
-#mainap{
-    -fx-background-image: url("/MainResources/PuzzleGames.png");
-    -fx-background-size: 100% 100%;
-}
-
-#sudokuap{
-    -fx-background-color: pink;
-    -fx-font-size: 100% 100%;
-}
